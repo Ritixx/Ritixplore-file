@@ -18,8 +18,13 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
 
-      - name: Grant execute permission to Gradle
-        run: chmod +x gradlew
+     - name: Install Gradle Manually
+  run: |
+    wget https://services.gradle.org/distributions/gradle-8.3-bin.zip
+    unzip gradle-8.3-bin.zip
+    mv gradle-8.3 gradle
+    chmod +x gradle/bin/gradle
+
 
       - name: Build APK
         run: ./gradlew assembleDebug
